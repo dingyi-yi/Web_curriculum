@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户个人文章管理</title>
+</head>
+<body>
+
+    <h1 class="text-center">用户文章信息维护</h1>
+
+    <!--该用户的基本信息-->
+    <div class="white-box" style="font-size: 20px" >
+        <div class="row" >
+            <div class="col-md-2 " >
+                用户名
+            </div>
+            <div class="col-md-10" id="UserArtMan_usName">
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-2 ">
+                邮箱
+            </div>
+            <div class="col-md-10"  id="UserArtMan_email">
+
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-2 " >
+                生日
+            </div>
+            <div class="col-md-10"  id="UserArtMan_birthday">
+
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-2 " >
+                余额
+            </div>
+            <div class="col-md-10"  id="UserArtMan_money">
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--该用户的文章列表-->
+    <div class="white-box">
+        <h3 class="text-left">文章列表</h3>
+
+
+        <div  class="row" style="margin-bottom: 10px">
+            <div class="col-md-2">
+                <button class="text-left btn btn-primary" id="addUserArticleBut">新增</button>
+            </div>
+            <div class="col-md-10">
+                <form class="text-right">
+                    <label for="searchUserArticle">文章信息检索: </label>
+                    <input type="text" id="searchUserArticle" placeholder="输入搜索内容">
+                </form>
+            </div>
+        </div>
+
+        <table class="table table-bordered"  id="userArticleTable">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+<script>
+    $(function (){
+        /*新增一篇文章，打开模态框*/
+        $("#addUserArticleBut").click(function (){
+            console.log(1);
+            $("#userArticleModalTitle").html("添加一篇文章")
+            $("#userArticleModal").modal('show');
+        });
+
+        /*用户文章检索*/
+        $("#searchUserArticle").on(" input propertychange",function (){
+            var sstxt=$('#searchUserArticle').val();
+            $("#userArticleTable tbody tr").hide().filter(":contains('"+sstxt+"')").show();
+        });
+    })
+</script>
+
+</body>
+</html>

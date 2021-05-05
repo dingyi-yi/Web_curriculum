@@ -1,0 +1,18 @@
+
+
+spring:
+ #数据库配置
+ datasource:
+  url: jdbc:sqlserver://localhost:64679;DatabaseName=Web_database
+  driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  username: sa
+  password: 123456
+ #关闭模板引擎缓存
+ thymeleaf:
+  cache: false #缓存
+
+#mybatis配置
+mybatis:
+  type-aliases-package: com.Entity
+  mapper-locations: classpath:mybatis/mapper/*.xml
+

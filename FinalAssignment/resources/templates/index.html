@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" th:href="@{images/favicon.png}" type="image/png">
+  <title>Home</title>
+
+
+     <!--End  Page Level  CSS -->
+    <link th:href="@{css/icons.css}" rel="stylesheet">
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/style.css}" rel="stylesheet">
+    <link th:href="@{css/responsive.css}" rel="stylesheet">
+
+</head>
+
+<body class="sticky-header">
+
+
+    <!--左导航-->
+    <div class="left-side sticky-left-side">
+
+        <!--logo-->
+        <div class="logo">
+            <a th:href="index.html"><img th:src="@{images/logo.png}" alt="" class="img-fluid " ></a>
+        </div>
+
+        <!--logo-->
+
+
+
+        <div class="left-side-inner">
+            <!--Sidebar nav-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+                <li class="menu-list nav-active"><a th:href="index.html">
+					<i class="icon-home"></i> <span>主页</span></a>   
+                </li>
+
+                <li class="menu-list"><a ><i class="icon-layers"></i> <span>功能模块</span></a>
+                    <ul class="sub-menu-list">
+                        <li id="administratorInfo"><a  > 个人中心</a></li>
+                        <li><a id="userInfo"> 用户管理</a></li>
+                        <li><a id="articleIndex">文章管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--End sidebar nav-->
+
+        </div>
+    </div>
+    <!--左导航结束-->
+    
+    
+    <!-- main content start-->
+    <div class="main-content" style="height:100%">
+
+        <!-- header section start-->
+        <div class="header-section">
+
+            <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                    <li>
+                        <a  class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <img th:src="@{images/portrait.jpeg}"/>
+                            [[${session.administrator.adName}]]
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                          <li id="changePassword"> <a  > <i class="fa fa-wrench"></i> 修改密码 </a> </li>
+                          <li> <a > <i class="fa fa-user"></i> 注销 </a> </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+        <!-- header section end-->
+
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+          <!--Start Page Title-->
+           <div class="page-title-box">
+                <ol class="breadcrumb">
+                    <li>
+                        <a>功能模块</a>
+                    </li>
+                    
+                    <li  id="navLink2">
+                    </li>
+                </ol>
+             </div>
+              <!--End Page Title-->          
+            <div class="row" >
+				<div class="col-md-12" id="main">
+
+				</div>
+			</div>
+					   
+                                                                        			   
+		</div>
+        <!-- End Wrapper-->
+
+
+
+       </div>
+      <!--End main content -->
+    
+
+
+    <!--Begin core plugin -->
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+
+
+    <script  th:src="@{js/jquery.slimscroll.js} "></script>
+    <script th:src="@{js/jquery.nicescroll.js}"></script>
+
+    <script th:src="@{js/functions.js}"></script>
+	<script th:src="@{js/index.js}"></script>
+    <script th:src="@{js/Chart.bundle.min.js}"></script>
+    <!-- End core plugin -->
+
+
+    <script>
+        function getAdId(){
+            return '[[${session.administrator.adId}]]';
+        }
+        function getAdPassword(){
+            return '[[${session.administrator.adPassword}]]';
+        }
+
+    </script>
+
+    <!--此表单用于取款后重新加载main.jsp文件以更新数据-->
+    <form name="frmApp" action="/login" id="frmAppId" mothed="post"/>
+        <input  type="hidden" name="adId" th:value="${#strings.replace(session.administrator.getAdId(),' ','')}"  >
+        <input  type="hidden" name="password" id="refreshPassword">
+    </form>
+
+	<!--修改密码模态框-->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel"  >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" >修改密码</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" action="base_forms_samples.html" method="post" onsubmit="return false;">
+                            <div class="form-group">
+                                <label class="col-xs-12" for="oldPassword" id="oldPasswordLabel">旧密码</label>
+                                <div class="col-xs-12">
+                                    <input class="form-control" type="text" id="oldPassword" name="oldPassword"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-12" for="newPassword">新密码</label>
+                                <div class="col-xs-12">
+                                    <input class="form-control" type="password" id="newPassword" name="newPassword"  />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-xs-12" for="confirmNewPassword" id="confirmNewPasswordLabel">确认新密码</label>
+                                <div class="col-xs-12">
+                                    <input class="form-control" type="password" id="confirmNewPassword" name="confirmNewPassword"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="subPasswordChange">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--管理员修改个人信息模态框-->
+    <div class="modal fade" id="ModifySelfInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModifySelfInfoModalTitle">修改个人信息</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="base_forms_samples.html" method="post" onsubmit="return false;">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="AdNewName">姓名</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" id="AdNewName" name="adName"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12" for="AdNewBirthday">生日</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="date" id="AdNewBirthday" name="birthday"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12" for="AdNewEmail">邮箱</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" id="AdNewEmail" name="email"  />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="subModifySelfInfo">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--新增用户信息模块-->
+    <div class="modal fade" id="addUserInfoModal" tabindex="-1" aria-labelledby="addUserInfoModal"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">新增用户信息</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="base_forms_samples.html" method="post" onsubmit="return false;">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="addUsName">姓名</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" id="addUsName" name="usName"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12" for="addUsPassword">密码</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" id="addUsPassword" name="usPassword"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12" for="addUsBirthday">生日</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="date" id="addUsBirthday" name="birthday"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12" for="addUsEmail">邮箱</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" id="addUsEmail" name="email"  />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="subAddUserInfo">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--编辑用户信息模块-->
+    <div class="modal fade" id="editorUserInfoModal" tabindex="-1" aria-labelledby="editorUserInfoModal"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" >编辑用户信息:</h2>
+                    <h4 id="editorUsId"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="base_forms_samples.html" method="post" onsubmit="return false;">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="editorUsName">姓名</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" id="editorUsName" name="usName"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12" for="editorUsPassword">密码</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" id="editorUsPassword" name="usPassword"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12" for="editorUsBirthday">生日</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="date" id="editorUsBirthday" name="birthday"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12" for="editorUsEmail">邮箱</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" id="editorUsEmail" name="email"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-12" for="editorUsMoney">金额</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" id="editorUsMoney" name="money"  />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="subEditorUserInfo">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--用户文章模态框-->
+    <div class="modal fade" id="userArticleModal" tabindex="-1" aria-labelledby="userArticleModal"  >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="userArticleModalTitle" >添加一篇文章</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" id="userArticleModalHidden">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="articleIdDiv" class="text-center"></div>
+
+                    <form class="form-horizontal" action="base_forms_samples.html" method="post" onsubmit="return false;">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="userArticleTitle">文章标题</label>
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" id="userArticleTitle" name="usName"  />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-12" for="userArticleContent">文章内容</label>
+                            <div class="col-xs-12">
+                                <textarea class="form-control" style="resize: none" cols="28" id="userArticleContent" name="usPassword"  ></textarea>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="dismissUserArticleModal">取消</button>
+                    <button type="button" class="btn btn-primary" id="subUserArticle">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

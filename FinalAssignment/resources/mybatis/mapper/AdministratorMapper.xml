@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mapper.AdministratorMapper">
+
+    <select id="selectByadName" resultType="AdministratorEntity">
+        select* from Administrator_info where adName=#{adName}
+    </select>
+
+    <select id="selectByadId" resultType="AdministratorEntity">
+        select* from Administrator_info where adId=#{adId}
+    </select>
+
+    <update id="updataPassword" >
+        update Administrator_info set adPassword=#{newPassword} where adId=#{adId}
+    </update>
+
+    <insert id="insertAdministrator" parameterType="AdministratorEntity">
+        insert into Administrator_info values (#{adId},#{adName},#{adPassword},#{birthday},#{email},#{money})
+    </insert>
+
+    <update id="updateSelfInfo">
+        update Administrator_info set adName=#{newName},birthday=#{newBirthday},email=#{newEmail} where adId=#{adId}
+    </update>
+</mapper>

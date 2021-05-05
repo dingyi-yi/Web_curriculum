@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="assets/images/favicon.png" type="image/png">
+  <title>Home</title>
+
+
+	
+
+
+</head>
+	<body>
+    <div class="white-box"  >
+		<h1 class="text-center">个人信息</h1>
+		<div class="container">
+			<table class="table table-bordered"  id="AdminSelfInfoTable">
+				<thead>
+					<tr>
+						<th>账号</th>
+						<th>姓名</th>
+						<th>密码</th>
+                        <th>生日</th>
+                        <th>邮箱</th>
+                        <th>余额</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>[[${session.administrator.adId}]]</td>
+						<td>[[${session.administrator.adName}]]</td>
+						<td>[[${session.administrator.adPassword}]]</td>
+                        <td>[[${session.administrator.birthday}]]</td>
+                        <td>[[${session.administrator.email}]]</td>
+                        <td>[[${session.administrator.money}]]</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModifySelfInfoModal">
+				修改个人信息
+			</button>
+		</div>
+
+
+    </div>
+
+	</body>
+</html>

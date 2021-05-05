@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mapper.ArticleInfoMapper">
+    <select id="selectByusId" resultType="ArticleInfoEntity">
+        select* from Article_info where usId=#{usId}
+    </select>
+
+    <insert id="insertArticleInfo" parameterType="ArticleInfoEntity">
+        insert into Article_info  values (#{usId},#{arId},#{title},#{content})
+    </insert>
+
+    <delete id="deleteArticleInfo">
+        delete from Article_info where arId=#{arId}
+    </delete>
+
+    <update id="updataArticleInfo">
+        update Article_info set title=#{title},content=#{content} where arId=#{arId}
+    </update>
+</mapper>

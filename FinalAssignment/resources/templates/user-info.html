@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+</head>
+<body>
+
+    <div class="white-box"  >
+        <h1 class="text-center">用户信息</h1>
+        <div class="text-right" style="margin-bottom: 10px">
+            <form>
+                <label for="searchUserInfo">用户信息检索: </label>
+                <input type="text" id="searchUserInfo" placeholder="输入搜索内容">
+            </form>
+        </div>
+        <table id="userInfoTable" class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>序号</th>
+                    <th>账号</th>
+                    <th>姓名</th>
+                    <th>密码</th>
+                    <th>邮箱</th>
+                    <th>生日</th>
+                    <th>余额</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserInfoModal">
+            新增用户信息
+        </button>
+    </div>
+
+<script>
+    $(function (){
+        /*用户信息表检索*/
+        $("#searchUserInfo").on(" input propertychange",function (){
+
+            var sstxt=$('#searchUserInfo').val();
+            $("#userInfoTable tbody tr").hide().filter(":contains('"+sstxt+"')").show();
+        })
+    })
+</script>
+
+</body>
+</html>

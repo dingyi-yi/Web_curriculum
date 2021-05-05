@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.mapper.UserInfoMapper">
+
+    <insert id="insertUserInfo" parameterType="UserInfoEntity">
+        insert into User_Info values (#{usId},#{usName},#{usPassword},#{birthday},#{email},#{money},#{articleNum})
+    </insert>
+
+    <select id="selectAll" resultType="UserInfoEntity">
+        select * from User_Info
+    </select>
+
+    <delete id="deleteUserInfo">
+        delete from User_Info WHERE usId=#{usId}
+    </delete>
+
+    <update id="updataUserInfo" parameterType="UserInfoEntity">
+        update User_Info set usName=#{usName},usPassword=#{usPassword},birthday=#{birthday},email=#{email},
+                             money=#{money} where usId=#{usId}
+    </update>
+
+    <select id="selectByusId" resultType="UserInfoEntity">
+        select * from User_Info where usId=#{usId}
+    </select>
+
+    <update id="updataUserArtNum">
+        update User_Info set articleNum=articleNum+#{num} where usId=#{usId}
+    </update>
+</mapper>
