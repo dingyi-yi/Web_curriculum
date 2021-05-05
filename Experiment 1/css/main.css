@@ -1,0 +1,90 @@
+
+			/*下面的星号让素有元素内外边距都为0，不留空隙*/
+*{
+padding:0px;
+margin:0px;
+/*我们让整个屏幕都有一种淡淡的背景色*/
+}
+html,body{
+width:100%;
+height:100%;
+background-color:lightcyan;
+}
+/*下面这个box是承载全部网页内容的容器样式，是下面所有div元素的父级元素的样式，注意一定要先将字号设为0，否则主体和页脚之间会有一条白色缝隙*/
+#box{
+width:100%;
+	height:100%;
+	margin:0 auto;
+	font-size:0;
+	}
+#logo{
+	height:10%;
+	background-color:orange;
+}
+#nav{
+	display:inline-block;
+	width:30%;
+	height:80%;
+	background-color:lightseagreen;	
+}
+#main{
+	display:inline-block;
+	width: calc(100% - 30%);
+	height:80%;
+	background-color:lightgoldenrodyellow;
+	float:right;			
+}
+#footer{
+	height:10%;
+	background-color:darkgrey;
+	margin:0px;
+}
+
+
+@media screen and (max-width: 1000px)
+{
+	
+#nav{
+	display:inline-block;
+	width:300px;	
+	
+}
+
+#main{
+	display:inline-block;
+	width: calc(100% - 300px);
+	
+	float:right;			
+}
+}
+
+
+@media screen and (max-width: 800px)
+{
+
+#nav{
+	float:none;
+	width:100%;
+			
+}
+
+#main{
+	float:none;
+	width:100%;
+		
+}
+}
+
+
+@media screen and (max-width: 300px) {
+#main{
+	float:none;
+	width:100%;
+	
+}
+#nav{
+	display:none;				
+}
+}
+
+

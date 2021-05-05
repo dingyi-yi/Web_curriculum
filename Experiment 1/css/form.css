@@ -1,0 +1,79 @@
+html,body{
+	width:100%;
+	height:100%;
+	margin:0;
+}
+body{
+	background-image:url("../img/formbak.jpeg");
+	background-size:100% 100%;
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+.formbak{
+	
+	width:100%;
+	display:flex;
+}
+
+form{
+	width:40%;
+	height:auto;
+	background-color:#FFF0F5;
+	border:2px solid black;
+	margin-top:8%;
+	margin-left:auto;
+	margin-right:auto;
+	padding-bottom:3%;
+	
+}
+
+table{
+	height:auto;
+	margin:3%;
+	font-size:20px;
+	border:1px solid black;
+	padding:3%;
+	padding-left:5%;
+}
+
+td:nth-child(2n){
+	width:70%;
+}
+td:nth-child(odd){
+	width:30%;
+}
+
+input[type="submit"],input[type="reset"]{
+	width:30%;
+	margin-left:10%;
+}
+input[type="text"],input[type="email"]{
+	height:10%;
+	size:25;
+}
+
+td span{
+	font-size:10px;
+}
+
+textarea{
+  resize: none;
+}
+
+.formtitle{
+	margin-top:2%;
+	text-align:center;
+	font-size:25px;
+}
+
+.formbutton{
+	text-align:center;
+}
+
+.lable{
+	font-size:10px;
+}
+.lable input{
+	width:1.5rem;
+}
+

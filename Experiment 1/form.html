@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>web技术实验1——form</title>
+		<link rel="stylesheet"  type="text/css" href="./css/form.css">
+		<script src="./js/form.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="formbak">
+		<!--form开始-->
+			<form method="POST" action="#"  id="form">
+				<table>
+					<div class="formtitle">
+						<B>用户个人资料</B>
+					<div>
+					<tr>
+						<td><label>用户账号</label></td>
+						<td><input  id="MyId" disabled="disabled" size="25" value="10086"><br>
+							<span>(此账号用户不可以更改)</span>
+						<td>
+						
+					</tr>
+			
+					<tr>
+						<td><label>姓名：</label></td>
+						<td><input type="text" id="MyName" size="25" maxlength="10"></td>
+						
+					</tr>
+				
+					<tr>
+						<td><label>性别：</label></td>
+						<td>
+							<input type="radio" name="gender" id="gender" value="male" checked>男
+							<input type="radio" name="gender" id="gender" value="female">女	
+						</td>				
+					</tr>
+				
+					<tr>
+						<td><label>教育状况：</label></td>
+						<td>
+							<select id="degree">
+								<option value="senior">高中</option>
+								<option value="reguar" selected>本科</option>
+								<option value="master">硕士</option>	
+							</select>	
+						</td>
+					</tr>
+				
+					<tr>
+						<td><label>身份证号码：</label></td>
+						<td><input type="text" id="CardId" size="25" maxlength="18"></td>
+						
+					</tr>
+				
+					<tr>
+						<td><label>邮箱：</label></td>
+						<td><input type="email" id="Email" size="25"value="aaa@163.com"></td>
+						
+					</tr>
+				
+					<tr>
+						<td><label>兴趣爱好：</label></td>
+						<td>
+							<input type="checkbox" id="Intrests01" name="Intrests" value="体育" checked>体育
+							<input type="checkbox" id="Intrests01" name="Intrests" value="音乐" checked>音乐
+							<input type="checkbox" id="Intrests01" name="Intrests" value="旅游">旅游
+						<td>
+					</tr>
+				
+					<tr>
+						<td><label>自我介绍:</label></td>
+						<td>
+							<textarea id="Selfintroduction" rows="5" cols="28" oninput="getValue()" onporpertychange="getValue()">安徽黄梅戏艺术职业学院</textarea><br>
+							<label class="lable">最多允许:<span>100</span>个字节&nbsp;已用字节:<input type="text"id="used" value="11" size="1"></input>&nbsp;剩余字节:<input type="text" id="residual" value="89" size="1"></input></label>
+						</td>					
+					</tr>
+					
+				</table>
+					<input type="submit" value="确定" id="submit" onclick="check()">
+					<input type="reset" value="取消" id="reset"></td>
+			</form>
+
+		</div>
+	</body>
+</html>

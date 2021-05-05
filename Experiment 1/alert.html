@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>web技术实验1——form</title>
+	</head>
+
+<style>
+center{
+font-size:30px;
+padding:2%;
+}
+
+table{
+font-size:25px;
+margin:auto;
+border:1px solid black;
+}
+table tr{
+margin-top:10%;
+}
+td:nth-child(odd){
+width:auto;
+}
+td:nth-child(2n){
+padding-left:5%;
+width:auto;
+}
+</style>
+
+<script type="text/javascript">
+	//接收父窗口数据
+ 	var  json=location.search;
+	json=unescape(json).match(/\{.+?\}/);
+	json = eval("("+json+")");
+</script>
+
+<body>
+<center>信息校验</center>
+<table>
+	<tr>
+		<td>账号:</td>
+		<td><script>document.write(json.MyId);</script></td>
+	</tr>
+	<tr>
+		<td>姓名:</td>
+		<td><script>document.write(json.MyName);</script></td>
+	</tr>
+	<tr>
+		<td>性别:</td>
+		<td><script>document.write(json.gender);</script></td>
+	</tr>
+	<tr>
+		<td>身份证号:</td>
+		<td><script>document.write(json.CardId);</script></td>
+	</tr>
+	<tr>
+		<td>学历:</td>
+		<td><script>document.write(json.degree);</script></td>
+	</tr>
+	<tr>
+		<td>邮箱:</td>
+		<td><script>document.write(json.email);</script></td>
+	</tr>
+	<tr>
+		<td>爱好:</td>
+		<td><script>document.write(json.Intrest);</script></td>
+	</tr>
+	<tr>
+		<td>自我介绍:</td>
+		<td><script>document.write(json.Selfintroduction);</script></td>
+	</tr>
+</table>
+</body>
+</html>
